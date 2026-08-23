@@ -1,3 +1,5 @@
+// Lets admins publish or unpublish a programme so drafts stay hidden from students
+
 <?php
 require_once __DIR__ . '/../includes/auth.php';
 require_once __DIR__ . '/../includes/helpers.php';
