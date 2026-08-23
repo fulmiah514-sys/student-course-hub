@@ -1,5 +1,6 @@
 <?php
 /**
+// Admin login: checks username and password securely using password hashing
  * Run this once from the command line to generate a password hash for your
  * own admin password, then paste the output into schema_updates.sql (or run
  * an UPDATE against the Admins table) instead of using the placeholder hash.
