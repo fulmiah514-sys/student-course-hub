@@ -29,7 +29,7 @@ if (!$programme) {
 $stmt = $pdo->prepare(
     "SELECT pm.Year, m.ModuleID, m.ModuleName, m.Description, m.Image, m.ImageAltText,
             st.Name AS ModuleLeaderName,
-            (SELECT COUNT(*) FROM ProgrammeModules pm2 WHERE pm2.ModuleID = m.ModuleID) AS SharedCount
+            (SELECT COUNT(*) FROM ProgrammeModules pm2 WHERE pm2.ModuleID = m.ModuleID) AS COUNT(DISTINCT pm2.ProgrammeID)
      FROM ProgrammeModules pm
      JOIN Modules m ON pm.ModuleID = m.ModuleID
      LEFT JOIN Staff st ON m.ModuleLeaderID = st.StaffID
@@ -98,7 +98,7 @@ unset($_SESSION['flash']);
                             <?php if ($m['ModuleLeaderName']): ?>
                                 <span class="module-leader">— led by <?= h($m['ModuleLeaderName']) ?></span>
                             <?php endif; ?>
-                            <?php if ($m['SharedCount'] > 1): ?>
+                            <?php if ($m['COUNT(DISTINCT pm2.ProgrammeID)'] > 1): ?>
                                 <span class="shared-tag">Shared across programmes</span>
                             <?php endif; ?>
                             <?php if ($m['Description']): ?>
