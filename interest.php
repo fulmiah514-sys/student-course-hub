@@ -1,5 +1,6 @@
 <?php
 /**
+// Prevents students from registering interest twice for the same programme
  * Handles "Register Interest" submissions via AJAX (JSON in, JSON out).
  * Security measures:
  *  - CSRF token check
